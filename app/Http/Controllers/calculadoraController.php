@@ -18,4 +18,43 @@ class calculadoraController extends Controller
         }
         return view('resultado', $data = ['resultado' => $resultado]);
     }
+
+    public function subtrair(Request $request){
+        $quantidade = $request->input('quantidade');
+        return view('formSubtrair', $data = ['quantidade' => $quantidade]);
+    }    
+    public function calcularSubtracao(Request $request){
+        $quantidade = $request->input('quantidade');
+        $resultado = $request->input('n1');
+        for($i = 2; $i <= $quantidade; $i++){
+            $resultado -= $request->input('n'.$i);
+        }
+        return view('resultado', $data = ['resultado' => $resultado]);
+    }
+
+    public function multiplicar(Request $request){
+        $quantidade = $request->input('quantidade');
+        return view('formMultiplicacao', $data = ['quantidade' => $quantidade]);
+    }    
+    public function calcularMultiplicacao(Request $request){
+        $quantidade = $request->input('quantidade');
+        $resultado = $request->input('n1');
+        for($i = 2; $i <= $quantidade; $i++){
+            $resultado = $resultado * $request->input('n'.$i);
+        }
+        return view('resultado', $data = ['resultado' => $resultado]);
+    }
+
+    public function dividir(Request $request){
+        $quantidade = $request->input('quantidade');
+        return view('formDivisao', $data = ['quantidade' => $quantidade]);
+    }    
+    public function calcularDivisao(Request $request){
+        $quantidade = $request->input('quantidade');
+        $resultado = $request->input('n1');
+        for($i = 2; $i <= $quantidade; $i++){
+            $resultado = $resultado / $request->input('n'.$i);
+        }
+        return view('resultado', $data = ['resultado' => $resultado]);
+    }
 }
